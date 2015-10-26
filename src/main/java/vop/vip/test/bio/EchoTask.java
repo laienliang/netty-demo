@@ -33,6 +33,7 @@ public class EchoTask implements Runnable{
 			String request = br.readLine();
 			System.out.println(Thread.currentThread().getName()+":"+request);
 		} catch (IOException e) {
+		
 			e.printStackTrace();
 		}
 	}

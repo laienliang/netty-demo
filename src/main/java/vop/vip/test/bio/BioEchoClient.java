@@ -18,19 +18,13 @@ public class BioEchoClient {
 
 		for (int i = 0; i< 20; i++) {
 			final int j = i;
-			new Thread(() -> {
-				try {
-					connectServer(j);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}).start();
+			new Thread(() -> connectServer(j)).start();
 		}
 		
 
 	}
 
-	private static void connectServer(int i) throws IOException,	UnknownHostException {
+	private static void connectServer(int i) {
 		
 		try (Socket socket = new Socket(host, port);
 				BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), CharsetUtil.UTF_8));
@@ -39,6 +33,8 @@ public class BioEchoClient {
 			pw.println("tefasldfjasdlkfj测试"+i);
 			String response = br.readLine();
 			System.out.println(response);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
