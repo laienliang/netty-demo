@@ -16,7 +16,7 @@ public class BioEchoClient {
 	public static void main(String[] args) throws UnknownHostException,
 			IOException {
 
-		for (int i = 0; i< 20; i++) {
+		for (int i = 0; i< 200; i++) {
 			final int j = i;
 			new Thread(() -> connectServer(j)).start();
 		}
