@@ -89,7 +89,7 @@ public class NioEchoServer {
 					buffer.get(bytes);
 					// 得到输入的字符串
 					String inputStr = new String(bytes, CharsetUtil.UTF_8);
-					
+					System.out.println("收到的输入："+inputStr);
 					// 把了输入的字符串写回客户端
 					if (!StringUtil.isNullOrEmpty(inputStr)) {
 						byte[] resp = inputStr.getBytes(CharsetUtil.UTF_8);
