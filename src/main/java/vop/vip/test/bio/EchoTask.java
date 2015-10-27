@@ -30,6 +30,7 @@ public class EchoTask implements Runnable{
 		try (Socket connect = this.socker;
 				BufferedReader br = new BufferedReader(new InputStreamReader(connect.getInputStream(), CharsetUtil.UTF_8));
 				PrintWriter bw = new PrintWriter(connect.getOutputStream(), true)) {
+			// 阻塞方法
 			String request = br.readLine();
 			System.out.println(Thread.currentThread().getName()+":"+request);
 		} catch (IOException e) {
