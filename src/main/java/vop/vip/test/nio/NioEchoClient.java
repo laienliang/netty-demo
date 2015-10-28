@@ -23,7 +23,7 @@ public class NioEchoClient {
 	private static final int port = 8888;
 	
 	public static void main(String[] args) throws IOException {
-		for (int i=0; i<20; i++) {
+		for (int i=0; i<1; i++) {
 			new Thread(()->{
 				try {
 					ConnectServer();

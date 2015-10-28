@@ -22,7 +22,7 @@ import io.netty.util.internal.StringUtil;
 public class NioEchoServer {
 	public static void main(String[] args) {
 		try {
-			// 1、打开sockerChannel用于监听客户端连接
+			// 1、打开ServerSockerChannel用于监听客户端连接
 			ServerSocketChannel serverChannel = ServerSocketChannel.open();
 			// 2、设置为非阻塞
 			serverChannel.configureBlocking(false);
@@ -33,6 +33,8 @@ public class NioEchoServer {
 			// 5、把socketChannel注册到多路复用器，并监听接收连接事件
 			serverChannel.register(selector, SelectionKey.OP_ACCEPT);
 			
+			
+			// 6、监听网络事件
 			while (!Thread.currentThread().isInterrupted()) {
 				// 阻塞，如果有监听事件，立即返回，没有的话阻塞2s后，返回
 				selector.select(2000L);
