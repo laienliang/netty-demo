@@ -30,5 +30,4 @@ public class NettyEchoServer {
 		ChannelFuture future = b.bind(port).sync();
 		future.channel().closeFuture().sync();
 	}
-
 }
