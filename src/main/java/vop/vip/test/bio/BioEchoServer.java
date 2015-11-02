@@ -18,6 +18,7 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
  */
 public class BioEchoServer {
 	public static void main(String[] args) throws IOException {
+		// 1、创建serverSocket
 		@SuppressWarnings("resource")
 		ServerSocket serverSocket = new ServerSocket(8888);
 		
@@ -29,8 +30,10 @@ public class BioEchoServer {
 		System.out.println("服务启动成功。。。");
 		while (!Thread.currentThread().isInterrupted()) {
 			try {
+				// 2、接收客户端连接
 				socket = serverSocket.accept();
 				System.out.println(String.format("poolsize:%d,taskCount:%d,largestPoolsize:%d, queueSize:%d",executor.getPoolSize(),executor.getTaskCount(), executor.getLargestPoolSize(), executor.getQueue().size()));
+				// 3、处理连接
 				executor.submit(new EchoTask(socket));
 			} catch (Exception e) {
 				if (socket != null) {

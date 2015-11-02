@@ -37,18 +37,21 @@ public class NioEchoClient {
 
 	private static void ConnectServer() throws IOException,
 			ClosedChannelException {
+		// 1、创建channel
 		SocketChannel channel = SocketChannel.open();
-		// 设置为非阻塞
+		// 2、设置为非阻塞
 		channel.configureBlocking(false);
-		// 打开多路复用器
+		// 3、打开多路复用器
 		Selector selector = Selector.open();
-		// 连接服务端
+		// 4、连接服务端
 		boolean isConnected = channel.connect(new InetSocketAddress(host, port));
 		if (isConnected) {
+			// 5、监听读事件
 			channel.register(selector, SelectionKey.OP_READ);
-			// 向服务端写请求
+			// 6、向服务端写请求
 			writeRequest(channel);
 		} else {
+			//
 			channel.register(selector, SelectionKey.OP_CONNECT);
 		}
 		
