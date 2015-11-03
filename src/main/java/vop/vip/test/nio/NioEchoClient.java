@@ -43,7 +43,7 @@ public class NioEchoClient {
 		channel.configureBlocking(false);
 		// 3、打开多路复用器
 		Selector selector = Selector.open();
-		// 4、连接服务端
+		// 4、连接远程端口
 		boolean isConnected = channel.connect(new InetSocketAddress(host, port));
 		if (isConnected) {
 			// 5、监听读事件
